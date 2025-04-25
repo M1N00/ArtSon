@@ -21,7 +21,7 @@ function setupImageHover(id, urlHover, urlDefault) {
 
 const ApropButton = document.getElementById('Propos');
 ApropButton.addEventListener('click', () => {
-  window.location.href = 'Pages/Apropos/index.html'; // Redirige vers la page "À propos"
+  window.location.href = 'Pages/APropos/index.html'; // Redirige vers la page "À propos"
 });
 
 
