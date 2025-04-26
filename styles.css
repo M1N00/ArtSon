@@ -160,7 +160,13 @@ body {
 
 
 }
-
+.Chat_vente-price {
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: bold;
+  margin: 10px 0;
+  text-align: center;
+}
 
 
 .TémoignageContainer {

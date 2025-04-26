@@ -52,8 +52,10 @@ fetch('DATA.csv')
       const col2 = columns[1].trim();
       const col3 = columns[2].trim();
       const col4 = columns[3].trim();
+      const col7 = columns[6].trim();
 
       // Appels de la fonction pour chaque produit
+      createChatVente(col7, col1, col1+"-btn", col2); // Crée un élément Chat_vente avec l'ID de l'image et le prix
       setupImageHover(col1, col3, col4);
       document.getElementById(col1).src = col4; // Définit l'image par défaut
 
@@ -71,3 +73,40 @@ fetch('DATA.csv')
     }
   })
   .catch(err => console.error('Erreur lors du chargement du fichier CSV :', err));
+
+
+// Fonction pour créer un élément Chat_vente
+function createChatVente(containerId, imageId, buttonId, price) {
+  // Sélectionner le conteneur où ajouter le nouvel élément
+  const container = document.getElementById(containerId);
+
+  // Créer le div principal
+  const chatVenteDiv = document.createElement('div');
+  chatVenteDiv.className = 'Chat_vente';
+
+  // Créer l'image
+  const img = document.createElement('img');
+  img.id = imageId;
+
+  // Créer le bouton
+  const button = document.createElement('button');
+  button.className = 'GeneralButton';
+  button.id = buttonId;
+  button.textContent = 'Voir plus';
+
+  // Créer l'élément pour le prix
+  const priceElement = document.createElement('p');
+  priceElement.className = 'Chat_vente-price';
+  priceElement.textContent = `${price}`;
+
+  // Ajouter l'image, le prix et le bouton au div principal
+  chatVenteDiv.appendChild(img);
+  chatVenteDiv.appendChild(priceElement);
+  const buttonWrapper = document.createElement('p');
+  buttonWrapper.appendChild(button);
+  chatVenteDiv.appendChild(buttonWrapper);
+
+  // Ajouter le div principal au conteneur
+  container.appendChild(chatVenteDiv);
+}
+

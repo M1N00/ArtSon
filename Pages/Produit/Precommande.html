@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtSon</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="scroll-up" class="fixed-div" style=" background-color: rgba(34, 34, 34, 0.87);">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <a href="../../index.html" style="text-decoration: none; color: inherit; font-weight: bold; cursor: pointer; font-size: 40px;">
+            ArtSon
+          </a>
+          <div style="display: flex; align-items: center; gap: 10px; margin-right: 20px;">
+
+
+          </div>
+        </div>
+      </div>
+    
+
+
+
+    <div class="background-div">
+        <h3 style="color: white; font-family: 'Playfair Display', serif;">Précommander</h3>
+        <button class="GeneralButton" id="Menu">Retour</button>
+    </div>
+
+    <p style="color: white; font-family: 'Playfair Display', serif; font-size: 40px;">Veuillez rentrer votre adresse mail et/ou téléphone.</p>
+    <p style="color: white; font-family: 'Playfair Display', serif; font-size: 40px;">L'équipe ArtSon vous contactera sous peu</p>
+            <!-- Nouveau formulaire pour le numéro de téléphone -->
+            <form style="margin-top: 20px; text-align: center; padding: 50px;">
+                <input id="contact-input"
+                 
+                    placeholder="Entrez votre numéro de téléphone ou adresse e-mail" 
+                    style="padding: 10px; font-size: 16px; border-radius: 5px; border: 1px solid #ccc; width: 80%; max-width: 400px;"
+                    required>
+            
+                <p><button id="Envoyer"
+             
+                class="GeneralButton">
+                Envoyer
+            </button></p> 
+            </form>
+
+
+            
+
+    
+
+
+
+
+
+
+    <div class="footer-container">
+
+        <p class="footer-text">Copyright © ArtSon</p>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+    emailjs.init("u0luYOls1ADrXhG0M");
+</script>
+<script src="Precommande.js" type="module"></script>
+</html>

@@ -2,7 +2,8 @@ const element = document.getElementById('TextExplicatif');
 const titre = document.getElementById('titre');
 const image1 = document.getElementById('ImageProduit1');
 const image2 = document.getElementById('ImageProduit2');
-
+const price = document.getElementById('Prix');
+const Précommande = document.getElementById('commander');
 
 
 
@@ -23,6 +24,7 @@ fetch('../../DATA.csv') // adapte le chemin si nécessaire
         titre.innerHTML = columns[5].trim(); // Met à jour le titre
         image1.src = "../../"+columns[2].trim(); // Met à jour la première image
         image2.src = "../../"+columns[3].trim(); // Met à jour la première image
+        price.innerHTML = columns[1].trim(); // Met à jour le prix
         break;
       }
     }
@@ -31,3 +33,8 @@ fetch('../../DATA.csv') // adapte le chemin si nécessaire
     console.error("Erreur lors du chargement du fichier CSV :", error);
     element.innerHTML = "<strong>Erreur lors du chargement de la description du produit.</strong>";
   });
+
+Précommande.addEventListener('click', () => {
+  window.location.href = 'Precommande.html#'+idFromUrl; // Redirige vers la page de précommande
+});
+
