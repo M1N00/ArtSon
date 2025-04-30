@@ -1,70 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArtSon</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chargement...</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: rgb(42, 31, 15); /* Bleu foncé moderne */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .loader {
+      width: 64px;
+      height: 64px;
+      border: 8px solid rgb(80, 59, 28);
+      border-top: 8px solid rgb(182, 135, 65); /* Bleu clair */
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 <body>
-    <div id="scroll-up" class="fixed-div" style=" background-color: rgba(34, 34, 34, 0.87);">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <a href="index.html" style="text-decoration: none; color: inherit; font-weight: bold; cursor: pointer; font-size: 40px;">
-            ArtSon
-          </a>
-          <div style="display: flex; align-items: center; gap: 10px; margin-right: 20px;">
-
-
-          </div>
-        </div>
-      </div>
     
-
-
-
-    <div class="background-div">
-        <h3 style="color: white; font-family: 'Playfair Display', serif;">L’élégance du cuir, façonnée pour durer et vous accompagner chaque jour.</h3>
-        <button class="GeneralButton" id="Propos">À Propos</button>
-    </div>
-
-    
-    <div>
-        <h2 style="font-size: 40px; color: white;">Ligne 1</h2>
-            <div class="Chat_vente-container" id="Ligne1">
-
-                
-            </div>
-    </div>
-    <div>
-        <h2 style="font-size: 40px; color: white;">Ligne 2</h2>
-        <div class="Chat_vente-container" id="Ligne2">
-   
-            
-        </div>
-    </div>
-
-    <div>
-        <h2 style="font-size: 40px; color: white;">Ligne 3</h2>
-        <div class="Chat_vente-container" id="Ligne3">
-
-            
-        </div>
-    </div>
-
-
-
-    
-
-
-
-
-
-
-    <div class="footer-container">
-
-        <p class="footer-text">Copyright © ArtSon</p>
-    </div>
+  <div class="loader"></div>
 </body>
-<script src="script.js"></script>
+<script>
+  // Fonction pour lire le contenu de ON-OFF.txt
+  async function fetchFileContent() {
+    try {
+      const response = await fetch('ON-OFF.txt'); // Assurez-vous que le fichier est dans le même répertoire
+      if (!response.ok) {
+        throw new Error('Erreur lors du chargement du fichier');
+      }
+      const content = await response.text();
+      console.log('Contenu du fichier:', content); // Affiche le contenu dans la console
+      // Vous pouvez maintenant utiliser la variable `content` comme bon vous semble
+
+      if (content.includes('ON')) {
+        // Si le contenu contient "ON", redirigez vers index2.html
+        window.location.href = 'index2.html';
+      } 
+      else if (content.includes('on')) {
+        // Si le contenu contient "ON", redirigez vers index2.html
+        window.location.href = 'index2.html';
+      } 
+      else if (content.includes('On')) {
+        // Si le contenu contient "ON", redirigez vers index2.html
+        window.location.href = 'index2.html';
+      } 
+      else {
+        // Si le contenu contient "OFF", redirigez vers index3.html
+        window.location.href = 'Construction.html';
+      }
+
+    } catch (error) {
+      console.error('Erreur:', error);
+    }
+  }
+
+  // Appel de la fonction
+  fetchFileContent();
+</script>
 </html>

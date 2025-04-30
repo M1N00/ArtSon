@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Site en cours de construction</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+
+    .construction {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 2rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+      100% { transform: translateY(0); }
+    }
+
+    #snakeCanvas {
+      border: 2px solid #333;
+      background-color: #fff;
+      margin-top: 30px;
+    }
+
+    .note {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>🚧 Site en cours de construction 🚧</h1>
+  <div class="construction">
+    🏗️ 👷 🔨 🦺 🚧
+  </div>
+  <h2>Voilà un petit jeu de snake pour vous occupez pendant que le site est en construction</h2>
+
+  <canvas id="snakeCanvas" width="400" height="400"></canvas>
+  <div class="note">Utilisez les flèches ← ↑ ↓ → pour jouer au Snake !</div>
+
+  <script>
+    const canvas = document.getElementById("snakeCanvas");
+    const ctx = canvas.getContext("2d");
+    const box = 20;
+    let snake, direction, food, lastTime = 0;
+    const speed = 100; // en ms
+  
+    function initGame() {
+      snake = [{ x: 9 * box, y: 10 * box }];
+      direction = "RIGHT";
+      food = {
+        x: Math.floor(Math.random() * 20) * box,
+        y: Math.floor(Math.random() * 20) * box
+      };
+    }
+  
+    document.addEventListener("keydown", e => {
+      if (e.key === "ArrowLeft" && direction !== "RIGHT") direction = "LEFT";
+      else if (e.key === "ArrowUp" && direction !== "DOWN") direction = "UP";
+      else if (e.key === "ArrowRight" && direction !== "LEFT") direction = "RIGHT";
+      else if (e.key === "ArrowDown" && direction !== "UP") direction = "DOWN";
+    });
+  
+    function gameLoop(timestamp) {
+      if (timestamp - lastTime > speed) {
+        draw();
+        lastTime = timestamp;
+      }
+      requestAnimationFrame(gameLoop);
+    }
+  
+    function draw() {
+      ctx.fillStyle = "#fff";
+      ctx.fillRect(0, 0, 400, 400);
+  
+      for (let i = 0; i < snake.length; i++) {
+        ctx.fillStyle = i === 0 ? "#4CAF50" : "#8BC34A";
+        ctx.fillRect(snake[i].x, snake[i].y, box, box);
+      }
+  
+      ctx.fillStyle = "#FF5722";
+      ctx.fillRect(food.x, food.y, box, box);
+  
+      let head = { x: snake[0].x, y: snake[0].y };
+  
+      if (direction === "LEFT") head.x -= box;
+      if (direction === "RIGHT") head.x += box;
+      if (direction === "UP") head.y -= box;
+      if (direction === "DOWN") head.y += box;
+  
+      // Collision avec mur ou soi-même
+      if (
+        head.x < 0 || head.x >= canvas.width ||
+        head.y < 0 || head.y >= canvas.height ||
+        snake.some((seg, i) => i > 0 && seg.x === head.x && seg.y === head.y)
+      ) {
+        initGame(); // Recommencer sans message
+        return;
+      }
+  
+      snake.unshift(head);
+  
+      if (head.x === food.x && head.y === food.y) {
+        food = {
+          x: Math.floor(Math.random() * 20) * box,
+          y: Math.floor(Math.random() * 20) * box
+        };
+      } else {
+        snake.pop();
+      }
+    }
+  
+    initGame();
+    requestAnimationFrame(gameLoop);
+  </script>
+    <div class="note">Merci de votre patience !</div>  
+  
+</body>
+</html>

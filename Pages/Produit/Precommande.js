@@ -7,7 +7,7 @@ document.querySelector('form').addEventListener('submit', (event) => {
 });
 
 Retour.addEventListener('click', () => {
-    window.location.href = 'index.html#' + idFromUrl; // Redirige vers la page d'accueil
+    window.location.href = 'index2.html#' + idFromUrl; // Redirige vers la page d'accueil
 });
 
 // Récupère l'ID depuis l'URL (ex: "#Produit2" → "Produit2")
